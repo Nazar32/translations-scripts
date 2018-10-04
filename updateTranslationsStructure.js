@@ -24,12 +24,13 @@ function getDirectories(source) {
 
 const params = {
   defaultLocale: 'ru-RU',
+  languagesDir: undefined,
 };
 
 parseConsoleArguments(params);
 
-const languagesDirPath = path.resolve(__dirname, '../languages');
-const defaultTranslationsPath = path.resolve(__dirname, `../languages/${params.defaultLocale}/translation.json`);
+const languagesDirPath = path.resolve(__dirname, `${params.languagesDir}/languages`);
+const defaultTranslationsPath = path.resolve(__dirname, `${params.languagesDir}/${params.defaultLocale}/translation.json`);
 
 const languages = getDirectories(languagesDirPath);
 const originalTranslations = dynamicRequire(defaultTranslationsPath);

@@ -37,14 +37,15 @@ const params = {
   locale: undefined,
   sourcePath: undefined,
   checkForFirstLetterCase: false,
+  languagesDir: undefined,
 };
 
 parseConsoleArguments(params);
 validateArguments(params);
 
 const newSource = parseSource();
-const fileToWrite = path.resolve(__dirname, `./${params.locale}/translation.json`);
-const originalSource = path.resolve(__dirname, `./${params.defaultLocale}/translation.json`);
+const fileToWrite = path.resolve(__dirname, `${params.languagesDir}/${params.locale}/translation.json`);
+const originalSource = path.resolve(__dirname, `${params.languagesDir}/${params.defaultLocale}/translation.json`);
 const originalTranslations = dynamicRequire(originalSource);
 let targetTranslations = null;
 
