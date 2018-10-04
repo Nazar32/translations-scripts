@@ -29,7 +29,7 @@ const params = {
 
 parseConsoleArguments(params);
 
-const languagesDirPath = path.resolve(__dirname, `${params.languagesDir}/languages`);
+const languagesDirPath = path.resolve(__dirname, `${params.languagesDir}`);
 const defaultTranslationsPath = path.resolve(__dirname, `${params.languagesDir}/${params.defaultLocale}/translation.json`);
 
 const languages = getDirectories(languagesDirPath);
