@@ -48,7 +48,7 @@ function findTranslationValue(translations, keyToFind) {
 }
 
 languages.forEach((language) => {
-  const languageTranslationFileName = path.resolve(__dirname, `../languages/${language}/translation.json`);
+  const languageTranslationFileName = path.resolve(__dirname, `${params.languagesDir}/${language}/translation.json`);
   const languageTranslations = dynamicRequire(languageTranslationFileName);
   let successfullyUpdatedPhrasesNumber = 0;
 
