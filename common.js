@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 function error(string) {
   global.console.log('\x1b[31m%s\x1b[0m', string);
@@ -41,10 +42,15 @@ function traverseTranslations(translations, callback) {
   });
 }
 
+function getTranslationFilePath(languagesDir, locale) {
+  return path.resolve(__dirname, `${languagesDir}/${locale}/translation.json`);
+}
+
 module.exports = {
   writeJsonToFile,
   parseConsoleArguments,
   error,
   dynamicRequire,
   traverseTranslations,
+  getTranslationFilePath,
 };

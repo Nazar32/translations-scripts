@@ -9,7 +9,7 @@
 const fs = require('fs');
 const path = require('path');
 const {
-  parseConsoleArguments, writeJsonToFile, dynamicRequire, traverseTranslations,
+  parseConsoleArguments, writeJsonToFile, dynamicRequire, traverseTranslations, getTranslationFilePathб
 } = require('./common');
 
 const { lstatSync, readdirSync } = fs;
@@ -30,7 +30,7 @@ const params = {
 parseConsoleArguments(params);
 
 const languagesDirPath = path.resolve(__dirname, `${params.languagesDir}`);
-const defaultTranslationsPath = path.resolve(__dirname, `${params.languagesDir}/${params.defaultLocale}/translation.json`);
+const defaultTranslationsPath = getTranslationFilePath(params.languagesDir, params.defaultLocale);
 
 const languages = getDirectories(languagesDirPath);
 const originalTranslations = dynamicRequire(defaultTranslationsPath);
@@ -48,7 +48,7 @@ function findTranslationValue(translations, keyToFind) {
 }
 
 languages.forEach((language) => {
-  const languageTranslationFileName = path.resolve(__dirname, `${params.languagesDir}/${language}/translation.json`);
+  const languageTranslationFileName = getTranslationFilePath(params.languagesDir, language);
   const languageTranslations = dynamicRequire(languageTranslationFileName);
   let successfullyUpdatedPhrasesNumber = 0;
 
